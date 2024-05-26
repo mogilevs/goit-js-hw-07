@@ -17,6 +17,7 @@ buttons[1].addEventListener("click", () => destroyBoxes());
 
 function createBoxes(num) {
   if (num >= 1 && num <= 100) {
+    boxes.innerHTML = "";
     let size = 30;
     for (let i = 1; i <= num; i += 1) {
       const newBox = document.createElement("div");
