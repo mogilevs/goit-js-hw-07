@@ -34,17 +34,21 @@ gallery.style.padding = "0";
 gallery.style.margin = "auto";
 gallery.style.width = "1128px";
 gallery.style.listStyle = "none";
+// original solution
+// const elements = [];
+// images.forEach(image => {
+//   const item = document.createElement("li");
+//   const picture = document.createElement("img");
+//   picture.src = image.url;
+//   picture.alt = image.alt;
+//   picture.setAttribute("width", 360);
+//   picture.setAttribute("height", 300);
+//   picture.style.objectFit = "cover";
+//   item.append(picture);
+//   elements.push(item);
+// })
+// gallery.append(...elements);
 
-const elements = [];
-images.forEach(image => {
-  const item = document.createElement("li");
-  const picture = document.createElement("img");
-  picture.src = image.url;
-  picture.alt = image.alt;
-  picture.setAttribute("width", 360);
-  picture.setAttribute("height", 300);
-  picture.style.objectFit = "cover";
-  item.append(picture);
-  elements.push(item);
-})
-gallery.append(...elements);
+// new solution
+const markup = images.map(image => `<li><img width="360" height="300" src=${image.url} alt=${image.alt} style="object-fit: cover"></li>`).join("");
+gallery.insertAdjacentHTML("afterbegin", markup);

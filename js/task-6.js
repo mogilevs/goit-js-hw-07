@@ -19,16 +19,25 @@ function createBoxes(num) {
   if (num >= 1 && num <= 100) {
     boxes.innerHTML = "";
     let size = 30;
-    const elements = [];
+    // original solution
+    // const elements = [];
+    // for (let i = 1; i <= num; i += 1) {
+    //   const newBox = document.createElement("div");
+    //   newBox.style.width = String(size) + "px";
+    //   newBox.style.height = String(size)+ "px";
+    //   newBox.style.backgroundColor = getRandomHexColor();
+    //   elements.push(newBox);
+    //   size += 10;
+    // }
+    // boxes.append(...elements);
+
+    // new solution
+    let markup = "";
     for (let i = 1; i <= num; i += 1) {
-      const newBox = document.createElement("div");
-      newBox.style.width = String(size) + "px";
-      newBox.style.height = String(size)+ "px";
-      newBox.style.backgroundColor = getRandomHexColor();
-      elements.push(newBox);
+      markup += `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`;
       size += 10;
     }
-    boxes.append(...elements);
+    boxes.insertAdjacentHTML("afterbegin", markup);
     inputNumber.value = "";
   }
 }
