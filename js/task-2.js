@@ -35,6 +35,7 @@ gallery.style.margin = "auto";
 gallery.style.width = "1128px";
 gallery.style.listStyle = "none";
 
+const elements = [];
 images.forEach(image => {
   const item = document.createElement("li");
   const picture = document.createElement("img");
@@ -43,7 +44,7 @@ images.forEach(image => {
   picture.setAttribute("width", 360);
   picture.setAttribute("height", 300);
   picture.style.objectFit = "cover";
-  gallery.append(item);
   item.append(picture);
+  elements.push(item);
 })
-
+gallery.append(...elements);
