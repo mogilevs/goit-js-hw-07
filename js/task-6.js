@@ -19,14 +19,16 @@ function createBoxes(num) {
   if (num >= 1 && num <= 100) {
     boxes.innerHTML = "";
     let size = 30;
+    const elements = [];
     for (let i = 1; i <= num; i += 1) {
       const newBox = document.createElement("div");
       newBox.style.width = String(size) + "px";
       newBox.style.height = String(size)+ "px";
       newBox.style.backgroundColor = getRandomHexColor();
-      boxes.append(newBox);
+      elements.push(newBox);
       size += 10;
     }
+    boxes.append(...elements);
     inputNumber.value = "";
   }
 }
